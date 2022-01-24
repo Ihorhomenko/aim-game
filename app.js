@@ -3,6 +3,7 @@ const screens = document.querySelectorAll(".screen");
 const timelist = document.querySelector(".time-list");
 const timeEl = document.querySelector("#time");
 const board = document.querySelector("#board");
+const restartBtn = document.querySelector("#restart");
 
 let time = 0;
 let score = 0;
@@ -11,6 +12,7 @@ startBtn.addEventListener("click", onStartBtnClick);
 
 timelist.addEventListener("click", onTimeBtnClick);
 board.addEventListener("click", onCircleClick);
+restartBtn.addEventListener("click", onRestartClick);
 
 function onStartBtnClick(e) {
   e.preventDefault();
@@ -26,14 +28,20 @@ function onTimeBtnClick(e) {
 }
 
 function startGame() {
+  score = 0;
+  board.innerHTML = ``;
   createRandomCircle();
-  setInterval(decreaseTime, 1000);
+  timerId = setInterval(decreaseTime, 1000);
   setTime(time);
+  timeEl.parentNode.classList.remove("hide");
+  restart.classList.add("hide");
 }
 
 function finishGame() {
+  clearTimeout(timerId);
   timeEl.parentNode.classList.add("hide");
   board.innerHTML = `<h1>Счет: <span class="primary">${score}</span></h1>`;
+  restart.classList.remove("hide");
 }
 
 function createRandomCircle() {
@@ -81,4 +89,9 @@ function decreaseTime() {
 
 function setTime(value) {
   timeEl.innerHTML = `00:${value}`;
+}
+
+function onRestartClick() {
+  screens[0].classList.remove("up");
+  screens[1].classList.remove("up");
 }

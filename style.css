@@ -101,3 +101,7 @@ h1 {
   border: 1px solid black;
   cursor: pointer;
 }
+
+.restart {
+  margin-top: 50px;
+}

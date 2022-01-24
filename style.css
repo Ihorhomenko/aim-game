@@ -98,5 +98,6 @@ h1 {
   /* background: linear-gradient(90deg, #16d9e3 0%, #30c7ec 47%, #46aef7 100%); */
   position: absolute;
   border-radius: 50%;
+  border: 1px solid black;
   cursor: pointer;
 }
